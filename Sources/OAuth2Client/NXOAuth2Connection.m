@@ -131,7 +131,7 @@ sendingProgressHandler:(NXOAuth2ConnectionSendingProgressHandler)aSendingProgres
 
 - (NSString *)description;
 {
-    return [NSString stringWithFormat:@"NXOAuth2Connection <%@>", request.URL];
+    return [NSString stringWithFormat:@"%@ NXOAuth2Connection <%@>", super.description, request.URL];
 }
 
 #pragma mark Public
@@ -229,6 +229,8 @@ sendingProgressHandler:(NXOAuth2ConnectionSendingProgressHandler)aSendingProgres
     } else {
         
         NSString *contentType = [aRequest valueForHTTPHeaderField:@"Content-Type"];
+        
+        contentType = @"application/x-www-form-urlencoded";
         
         if (!contentType || [contentType isEqualToString:@"multipart/form-data"]) {
         
